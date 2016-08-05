@@ -3,8 +3,14 @@ console.clear();
 
 (w => {
     function dscount(str, ...rest) {
+        //чтобы операции проводились без учета регистра, перевожу входную строку в нижний регистр
         return str.toLowerCase()
-                .split(rest.join("").toLowerCase())
+                //разделяю входную строку по сформированной в будущем строке
+                .split(
+                    //конкатенирую входные параметры и тоже перевожу в нижний регистр
+                    rest.join("").toLowerCase()
+                )
+                //так как я разделял строку, выходной массив будет иметь длянну на есдицу больше чем количество разделителей
                 .length - 1
     }
 
@@ -24,7 +30,7 @@ console.clear();
         console.error(e);
     }
 
-// Простая функция тестирования
+    // Простая функция тестирования
     function test(call, args, count, n) {
         let r = (call.apply(n, args) === count);
         console.assert(r, `Finded items count: ${count}`);
